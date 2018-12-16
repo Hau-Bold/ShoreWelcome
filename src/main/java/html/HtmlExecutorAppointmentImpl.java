@@ -256,7 +256,7 @@ public class HtmlExecutorAppointmentImpl implements HtmlExecutor {
 
 	@Override
 	public void writeCustomer(BufferedWriter bufferedWriter, Customer customer) throws IOException {
-		bufferedWriter.write(customer.getSalutation() + " " + customer.getPreName() + " " + customer.getSurName());
+		bufferedWriter.write(customer.getSalutation() + " " + customer.getPreName() + " " + customer.getCustomerName());
 	}
 
 }

@@ -683,7 +683,7 @@ public class HtmlExecutorOverviewImpl implements HtmlExecutor {
 	@Override
 	public void writeCustomer(BufferedWriter bufferedWriter, Customer customer) throws IOException {
 		bufferedWriter.write(Constants.CUSTOMER + Constants.COLON + " " + customer.getSalutation() + " "
-				+ customer.getPreName() + " " + customer.getSurName());
+				+ customer.getPreName() + " " + customer.getCustomerName());
 	}
 
 	/**

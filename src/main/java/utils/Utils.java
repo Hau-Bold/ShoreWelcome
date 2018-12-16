@@ -249,7 +249,7 @@ public class Utils {
 
 				String salutation = customerSplitted[0].trim();
 
-				if (salutation.equals(Constants.SALUTATION_MALE) || salutation.equals(Constants.SALUTATION_MALE)) {
+				if (salutation.equals(Constants.SALUTATION_MALE) || salutation.equals(Constants.SALUTATION_FEMALE)) {
 					/** salutation is a salutation! */
 					response.setSalutation(salutation);
 
@@ -279,13 +279,13 @@ public class Utils {
 				String preName = customerSplitted[0];
 
 				if (!(preName == Constants.SALUTATION_MALE) || !(preName == Constants.SALUTATION_FEMALE)) {
-					response.setPreName(customerSplitted[0].trim());
+					response.setPreName(customerSplitted[0].trim().substring(0, 1) + ".");
 				} else {
 					response.setPreName(preName);
 				}
 			}
 
-			response.setSurName(customerSplitted[customerSplitted.length - 1]);
+			response.setCustomerName(customerSplitted[customerSplitted.length - 1].trim().substring(0, 1) + ".");
 		}
 		return response;
 	}
@@ -302,11 +302,8 @@ public class Utils {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 
-		int hour = calendar.get(Calendar.HOUR_OF_DAY);
-		int minute = calendar.get(Calendar.MINUTE);
-		int second = calendar.get(Calendar.SECOND);
-		return new Time(hour, minute, second);
-
+		return new Time(calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE),
+				calendar.get(Calendar.SECOND));
 	}
 
 	/**
@@ -494,6 +491,9 @@ public class Utils {
 			time.Date date = current.getDate();
 
 			if (!(Integer.compare(date.getDayOfMonth(), dayOfMonth) == 0)) {
+
+				// TODO remove appoint if current.getServicer or current.getSubject?????
+
 				iterator.remove();
 			}
 

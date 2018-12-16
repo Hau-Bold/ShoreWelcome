@@ -50,7 +50,7 @@ public class Client_Intersport {
 	private static DayAndMonth saturday;
 	private static FilesOfFolder filesOfFolder;
 	private static List<File> lstICSFiles;
-	private static Boolean folderChanged, hasEnded;
+	private static Boolean hasFolderChanged, hasEnded;
 	private static JavascriptExecutor javascriptExecutor;
 	private static WebElement vid;
 
@@ -127,7 +127,7 @@ public class Client_Intersport {
 			lstICSFiles = filesOfFolder.getLstICSFiles();
 
 			/** has timestamp of folder changed? */
-			folderChanged = filesOfFolder.getFolderChanged();
+			hasFolderChanged = filesOfFolder.getFolderChanged();
 
 			for (File file : lstICSFiles) {
 				try {
@@ -198,11 +198,11 @@ public class Client_Intersport {
 
 				checkVideoCounter();
 
-				if (folderChanged || currentAppointmentIsDisplayed) {
+				if (hasFolderChanged || currentAppointmentIsDisplayed) {
 
 					if (currentAppointmentIsDisplayed) {
 						currentAppointmentIsDisplayed = Boolean.FALSE;
-						folderChanged = Boolean.TRUE;
+						hasFolderChanged = Boolean.TRUE;
 					}
 
 					/** this has to be done only if */
@@ -226,7 +226,7 @@ public class Client_Intersport {
 
 					executor = new HtmlExecutorAppointmentImpl(currentAppointment, pathOfHtmlPage,
 							Constants.TITLE_OF_PAGE_APPOINTMENT, Constants.HEADER_OF_PAGE_APPOINTMENT, isWindows);
-					folderChanged = Boolean.TRUE;
+					hasFolderChanged = Boolean.TRUE;
 					currentAppointmentIsDisplayed = Boolean.TRUE;
 				}
 
@@ -241,7 +241,7 @@ public class Client_Intersport {
 
 			if (executor != null) {
 
-				if (folderChanged) {
+				if (hasFolderChanged) {
 					concreteCommand.setExecutor(executor);
 					concreteCommand.execute();
 					/** writing of Html code is finished */

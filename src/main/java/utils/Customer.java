@@ -7,7 +7,7 @@ package utils;
 public class Customer {
 
 	private String preName;
-	private String surName;
+	private String customerName;
 	private String salutation;
 
 	/**
@@ -15,14 +15,14 @@ public class Customer {
 	 * 
 	 * @param preName
 	 *            - the preName
-	 * @param surName
-	 *            - the surName
+	 * @param customerName
+	 *            - the customerName
 	 * @param salutation
 	 *            - the salutation
 	 */
 	public Customer(String preName, String surName, String salutation) {
 		this.preName = preName;
-		this.surName = surName;
+		this.customerName = surName;
 		this.salutation = salutation;
 	}
 
@@ -31,12 +31,12 @@ public class Customer {
 	 * 
 	 * @param preName
 	 *            - the preName
-	 * @param surName
-	 *            - the surName
+	 * @param customerName
+	 *            - the customerName
 	 */
-	public Customer(String preName, String surName) {
+	public Customer(String preName, String name) {
 		this.preName = preName;
-		this.surName = surName;
+		this.customerName = name;
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class Customer {
 	 */
 	public Customer() {
 		preName = "";
-		surName = "";
+		customerName = "";
 		salutation = "";
 	}
 
@@ -57,12 +57,12 @@ public class Customer {
 		this.preName = preName;
 	}
 
-	public String getSurName() {
-		return surName;
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public void setSurName(String surName) {
-		this.surName = surName;
+	public void setCustomerName(String name) {
+		this.customerName = name;
 	}
 
 	public String getSalutation() {
