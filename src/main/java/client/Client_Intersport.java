@@ -140,6 +140,8 @@ public class Client_Intersport {
 			/** selecting Appointments belonging to the current Week */
 			lstAppointments = Utils.removeAppointmentsNotBelongingToCurrentWeek(lstAppointments, monday, saturday);
 
+			lstAppointments = Utils.removeAppointmentsNotHavingService(lstAppointments, Constants.RADABHOLUNG);
+
 			/** appointments of today */
 			lstTodaysAppointments = Utils.getTodaysAppointments(lstAppointments, dayOfMonth);
 

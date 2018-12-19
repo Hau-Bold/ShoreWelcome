@@ -12,7 +12,7 @@ public class Constants {
 
 	/** Windows */
 
-	public static final String PATH_TO_EXECUTABLE_GECKO_WINDOWS = "C:\\Users\\Haubold\\workspace\\geckodriver-v0.20.0-win64\\geckodriver.exe";
+	public static final String PATH_TO_EXECUTABLE_GECKO_WINDOWS = "C:\\Users\\Haubold\\workspace\\geckodriver-v0.23.0-win64\\geckodriver.exe";
 	public static final String PATH_TO_SOURCE_OF_PAGE_WINDOWS = "C:\\Users\\Haubold\\Desktop\\Intersport\\appointments.html";
 	public static final String DIRECTORY_ICS_FILES_WINDOWS = "C://Users//Haubold//Desktop/appointments/d7f4b0f1-d4c9-4f09-b924-937a530e0e22";
 	public static final String PATH_TO_ROBOTO_FONT_WINDOWS = "C:\\Users\\Haubold\\Desktop\\Intersport\\assets\\font.css";

@@ -249,29 +249,26 @@ public class Utils {
 
 				String salutation = customerSplitted[0].trim();
 
+				StringBuilder builder = new StringBuilder();
 				if (salutation.equals(Constants.SALUTATION_MALE) || salutation.equals(Constants.SALUTATION_FEMALE)) {
 					/** salutation is a salutation! */
 					response.setSalutation(salutation);
-
-					StringBuilder builder = new StringBuilder();
 
 					for (int position = 1; position < customerSplitted.length - 1; position++) {
 						builder.append(customerSplitted[position]);
 						builder.append(Constants.EMPTY_SPACE);
 					}
-					response.setPreName(builder.toString().trim());
 
 				} else {
 
 					/** salutation is not a salutation! */
-					StringBuilder builder = new StringBuilder();
 
 					for (int position = 0; position < customerSplitted.length - 1; position++) {
 						builder.append(customerSplitted[position]);
 						builder.append(Constants.EMPTY_SPACE);
 					}
-					response.setPreName(builder.toString().trim());
 				}
+				response.setPreName(builder.toString().trim());
 			}
 
 			else if (Integer.compare(customerSplitted.length, 2) == 0) {
@@ -279,7 +276,7 @@ public class Utils {
 				String preName = customerSplitted[0];
 
 				if (!(preName == Constants.SALUTATION_MALE) || !(preName == Constants.SALUTATION_FEMALE)) {
-					response.setPreName(customerSplitted[0].trim().substring(0, 1) + ".");
+					response.setPreName(customerSplitted[0]);
 				} else {
 					response.setPreName(preName);
 				}
@@ -492,11 +489,38 @@ public class Utils {
 
 			if (!(Integer.compare(date.getDayOfMonth(), dayOfMonth) == 0)) {
 
-				// TODO remove appoint if current.getServicer or current.getSubject?????
-
 				iterator.remove();
 			}
 
+		}
+
+		return response;
+	}
+
+	/**
+	 * removes all appointments not having the desired service
+	 * 
+	 * @param lstAppointments
+	 *            - the appointments
+	 * @param service
+	 *            - the desired service
+	 * @return - all appointments having the desired service
+	 */
+	public static List<Appointment> removeAppointmentsNotHavingService(List<Appointment> lstAppointments,
+			String service) {
+		List<Appointment> response = new ArrayList<Appointment>(lstAppointments);
+
+		Iterator<Appointment> iterator = response.iterator();
+
+		while (iterator.hasNext()) {
+			Appointment current = iterator.next();
+
+			String currentService = current.getService();
+
+			if (!currentService.equalsIgnoreCase(Constants.RADABHOLUNG)) {
+
+				iterator.remove();
+			}
 		}
 
 		return response;
