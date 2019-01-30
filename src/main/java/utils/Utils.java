@@ -282,7 +282,9 @@ public class Utils {
 				}
 			}
 
-			response.setCustomerName(customerSplitted[customerSplitted.length - 1].trim().substring(0, 1) + ".");
+			if (customerSplitted.length > 1) {
+				response.setCustomerName(customerSplitted[customerSplitted.length - 1].trim().substring(0, 1) + ".");
+			}
 		}
 		return response;
 	}
@@ -517,7 +519,7 @@ public class Utils {
 
 			String currentService = current.getService();
 
-			if (!currentService.equalsIgnoreCase(Constants.RADABHOLUNG)) {
+			if ((currentService == null) || (!currentService.equalsIgnoreCase(Constants.RADABHOLUNG))) {
 
 				iterator.remove();
 			}
